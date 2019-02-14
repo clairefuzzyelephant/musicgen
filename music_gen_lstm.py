@@ -42,7 +42,7 @@ def prepare_sequences(notes, n_vocab):
 
     """mapping note strings to numbers"""
 
-    seq_len = 50
+    seq_len = 100
 
     #get all pitch names
     pitchnames = sorted(set(item for item in notes))
