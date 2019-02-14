@@ -74,14 +74,14 @@ def create_network(net_in, n_vocab):
     """create the structure of neural net"""
     model = Sequential()
     model.add(LSTM(
-        512,
+        256,
         input_shape=(net_in.shape[1], net_in.shape[2]),
         return_sequences=True
     ))
     model.add(Dropout(0.3))
-    model.add(LSTM(512, return_sequences=True))
+    model.add(LSTM(256, return_sequences=True))
     model.add(Dropout(0.3))
-    model.add(LSTM(512))
+    model.add(LSTM(256))
     model.add(Dense(256))
     model.add(Dropout(0.3))
     model.add(Dense(n_vocab))
@@ -103,7 +103,7 @@ def train(model, net_in, net_out):
     )
     callbacks_list = [checkpoint]
 
-    model.fit(net_in, net_out, epochs=20, batch_size=64, callbacks=callbacks_list)
+    model.fit(net_in, net_out, epochs=160, batch_size=164, callbacks=callbacks_list)
 
 
 def train_network():
