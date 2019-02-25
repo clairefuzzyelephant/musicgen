@@ -4,7 +4,9 @@ Used tutorial from https://towardsdatascience.com/how-to-generate-music-using-a-
 
 ## Example results
 
+(All included in the repo)
 midi file: test_output.midi (use a midi reader like Musescore to open)
+
 mp3 audio file: test-output.mp3
 
 ## Install dependencies
