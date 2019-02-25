@@ -19,6 +19,8 @@ Make sure that you are running on python 3.6
 ```
 python predict.py
 ```
+Now you have your generated MIDI! You can use an online MIDI->MP3 converter or a MIDI reader to listen to your generated music.
+
 ## To train the model yourself
 ```
 python music_gen_lstm.py
@@ -27,6 +29,4 @@ Replace ```weights-improvement-107-1.0217-bigger.hdf5``` in line 70 of ```predic
 ```
 python predict.py
 ```
-Now you have your generated MIDI! You can use an online MIDI->MP3 converter or a MIDI reader to listen to your generated music.
-
 You can also replace the midi files in the training folder with your own music if you want a different style of music. I used Impressionism-era piano music, but anything works (single instrument files work best).
