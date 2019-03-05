@@ -8,8 +8,9 @@ from keras.layers import Dense
 from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.layers import Activation
+import sys
 
-def generate():
+def generate(start=None):
     """ Generate a piano midi file """
     #load the notes used to train the model
     with open('data/notes', 'rb') as filepath:
@@ -22,7 +23,7 @@ def generate():
 
     network_input, normalized_input = prepare_sequences(notes, pitchnames, n_vocab)
     model = create_network(normalized_input, n_vocab)
-    prediction_output = generate_notes(model, network_input, pitchnames, n_vocab)
+    prediction_output = generate_notes(model, network_input, pitchnames, n_vocab, start)
     create_midi(prediction_output)
 
 def prepare_sequences(notes, pitchnames, n_vocab):
@@ -71,10 +72,11 @@ def create_network(network_input, n_vocab):
 
     return model
 
-def generate_notes(model, network_input, pitchnames, n_vocab):
+def generate_notes(model, network_input, pitchnames, n_vocab, start=None):
     """ Generate notes from the neural network based on a sequence of notes """
     # pick a random sequence from the input as a starting point for the prediction
-    start = numpy.random.randint(0, len(network_input)-1)
+    if start==None:
+        start = numpy.random.randint(0, len(network_input)-1)
 
     int_to_note = dict((number, note) for number, note in enumerate(pitchnames))
 
@@ -131,4 +133,8 @@ def create_midi(prediction_output):
     midi_stream.write('midi', fp='test_output.mid')
 
 if __name__ == '__main__':
-    generate()
+    if len(sys.argv) > 1:
+        start = int(sys.argv[1])
+        generate(start)
+    else:
+        generate()
