@@ -80,6 +80,7 @@ def generate_notes(model, network_input, pitchnames, n_vocab, start=None):
 
     int_to_note = dict((number, note) for number, note in enumerate(pitchnames))
 
+    #print(len(network_input))
     pattern = network_input[start]
     prediction_output = []
 
