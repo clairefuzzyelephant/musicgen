@@ -19,6 +19,10 @@ Make sure that you are running on python 3.6
 ```
 $ python predict.py
 ```
+If you want to specify an index (this may be helpful for Hilbert Curve integration), enter a command-line argument for an index in the range (0, 37929) inclusive.
+```
+$ python predict.py x
+```
 Now you have your generated MIDI! You can use an online MIDI->MP3 converter or a MIDI reader to listen to your generated music.
 
 ## To train the model yourself
